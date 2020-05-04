@@ -125,6 +125,7 @@ class MatchBuilder
                     $team = $this->getTeamByName($match, $details['team']);
                     $player = $team->getPlayer($details['playerNumber']);
                     $player->addRedCard();
+                    $player->goToBench();
                     break;
 
             }
