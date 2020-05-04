@@ -11,14 +11,51 @@ class Player
     private string $playStatus;
     private int $inMinute;
     private int $outMinute;
+    private bool $hasYellowCard;
+    private bool $hasRedCard;
+    private int $goals;
 
     public function __construct(int $number, string $name)
     {
         $this->number = $number;
         $this->name = $name;
+        $this->goals = 0;
         $this->playStatus = self::BENCH_PLAY_STATUS;
         $this->inMinute = 0;
         $this->outMinute = 0;
+        $this->hasYellowCard = false;
+        $this->hasRedCard = false;
+    }
+
+    public function addGoal(): void
+    {
+        $this->goals += 1;
+    }
+
+    public function addYellowCard(): void
+    {
+        $this->hasYellowCard = true;
+    }
+
+    public function addRedCard(): void
+    {
+        $this->hasRedCard = true;
+    }
+
+    public function getHasYellowCard(): bool
+    {
+        return $this->hasYellowCard;
+    }
+
+    public function getHasRedCard(): bool
+    {
+        return $this->hasRedCard;
+    }
+
+
+    public function getGoals(): int
+    {
+        return $this->goals;
     }
 
     public function getNumber(): int
