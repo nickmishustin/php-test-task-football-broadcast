@@ -4,6 +4,11 @@ namespace App\Entity;
 
 class Team
 {
+    private const POS_FORWARD  = 'Нападающий';
+    private const POS_HALFBACK  = 'Полузащитник';
+    private const POS_BACK  = 'Защитник';
+    private const POS_GOALKEEPER  = 'Вратарь';
+
     private string $name;
     private string $country;
     private string $logo;
@@ -15,10 +20,17 @@ class Team
     private int $goals;
 
     private array $positionsTime  = [
-        'Н' => 0,
-        'П' => 0,
-        'З' => 0,
-        'В' => 0
+        self::POS_FORWARD => 0,
+        self::POS_HALFBACK => 0,
+        self::POS_BACK  => 0,
+        self::POS_GOALKEEPER => 0
+    ];
+
+    private array $positionsNames  = [
+        'Н' => self::POS_FORWARD,
+        'П' => self::POS_HALFBACK,
+        'З' => self::POS_BACK,
+        'В' => self::POS_GOALKEEPER
     ];
 
     public function __construct(string $name, string $country, string $logo, array $players, string $coach)
@@ -39,7 +51,9 @@ class Team
         $players = $this->getPlayers();
 
         foreach ($players as $player){
-            $this->positionsTime[$player->getPosition()] += $player->getPlayTime();
+            $this->positionsTime[
+                $this->positionsNames[$player->getPosition()]
+            ] += $player->getPlayTime();
         }
 
         return $this->positionsTime;
