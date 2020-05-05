@@ -47,7 +47,6 @@ class Team
 
     public function getPositionsTime(): array
     {
-     
         $players = $this->getPlayers();
 
         foreach ($players as $player){
