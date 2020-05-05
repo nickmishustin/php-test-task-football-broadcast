@@ -95,7 +95,7 @@ class Player
             return 0;
         }
 
-        return $this->outMinute - $this->inMinute + 1;
+        return $this->outMinute - $this->inMinute;
     }
 
     public function goToPlay(int $minute): void
