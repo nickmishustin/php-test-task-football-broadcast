@@ -15,9 +15,9 @@ class Team
     private int $goals;
 
     private array $positionsTime  = [
-        'Н' => 2,
+        'Н' => 0,
         'П' => 0,
-        'З' => 3,
+        'З' => 0,
         'В' => 0
     ];
 
